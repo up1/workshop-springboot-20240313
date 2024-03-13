@@ -8,9 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class CustomerControllerTest {
@@ -53,4 +51,21 @@ class CustomerControllerTest {
         assertEquals(500, response.getStatusCode().value());
         assertEquals("Error", response.getBody().getMessage());
     }
+
+    @Test
+    @DisplayName("Success case  :: create a new customer")
+    public void createNewCustomer(){
+        // Arrange
+        CustomerCreateRequest request = new CustomerCreateRequest();
+        request.setFname("somkiat");
+        request.setLname("pui");
+        // Act
+        ResponseEntity<CustomerResponse> response
+                = restTemplate.postForEntity("/customer", request, CustomerResponse.class);
+        // Assert
+        assertEquals(201, response.getStatusCode().value());
+        assertEquals(123, response.getBody().getId());
+        assertEquals("somkiat pui", response.getBody().getFull_name());
+    }
+
 }

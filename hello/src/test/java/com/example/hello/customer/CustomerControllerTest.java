@@ -32,4 +32,12 @@ class CustomerControllerTest {
         assertEquals(1, response.getId());
         assertEquals("somkiat pui", response.getFull_name());
     }
+
+    @Test
+    void getCustomerByIdWith404() {
+        // Act
+        ErrorResponse response = restTemplate.getForObject("/customer/2", ErrorResponse.class);
+        // Assert
+        assertEquals("Customer id=2 not found", response.getMessage());
+    }
 }

@@ -22,7 +22,7 @@ public class CustomerController {
         }
         if(id == 3) {
             // 500
-//            throw new BusinessException("Customer id=" + id + " not found");
+            throw new BusinessException("Error");
         }
 
         CustomerResponse response = new CustomerResponse();

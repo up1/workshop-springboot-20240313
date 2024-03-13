@@ -15,4 +15,11 @@ public class CustomerAdviceController {
         return new ResponseEntity<>(errorResponse, HttpStatusCode.valueOf(404));
     }
 
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ErrorResponse> handleBusinessException(Exception e) {
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setMessage(e.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatusCode.valueOf(500));
+    }
+
 }

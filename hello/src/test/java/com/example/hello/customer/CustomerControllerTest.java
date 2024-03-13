@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,5 +40,14 @@ class CustomerControllerTest {
         ErrorResponse response = restTemplate.getForObject("/customer/2", ErrorResponse.class);
         // Assert
         assertEquals("Customer id=2 not found", response.getMessage());
+    }
+
+    @Test
+    void getCustomerByIdWith500() {
+        // Act
+        ResponseEntity<ErrorResponse> response = restTemplate.getForEntity("/customer/3", ErrorResponse.class);
+        // Assert
+        assertEquals(500, response.getStatusCode().value());
+        assertEquals("Error", response.getBody().getMessage());
     }
 }

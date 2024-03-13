@@ -1,7 +1,15 @@
 package com.example.hello.customer;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class CustomerCreateRequest{
+	@NotNull
 	private String fname;
+
+	@NotNull
+	@Size(min = 3, max = 20)
 	private String lname;
 
 	public void setFname(String fname){

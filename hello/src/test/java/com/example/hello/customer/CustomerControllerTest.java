@@ -27,8 +27,9 @@ class CustomerControllerTest {
     @Test
     void getCustomerById() {
         // Act
-        String response = restTemplate.getForObject("/customer/1", String.class);
+        CustomerResponse response = restTemplate.getForObject("/customer/1", CustomerResponse.class);
         // Assert
-        assertEquals("Get customer by id=1", response);
+        assertEquals(1, response.getId());
+        assertEquals("somkiat pui", response.getFull_name());
     }
 }

@@ -1,6 +1,8 @@
 package com.example.hello.customer;
 
+import com.example.hello.validator.EmptyValidator;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +15,24 @@ import static org.springframework.http.HttpStatus.valueOf;
 @RequestMapping("/customer")
 public class CustomerController {
 
+    @Autowired
+    private EmptyValidator emptyValidator;
+
+    private void validateInput(CustomerCreateRequest request) {
+        if(request != null) {
+            emptyValidator.validate(request.getFname());
+            emptyValidator.validate(request.getLname());
+        }
+        throw new RuntimeException();
+    }
+
     @PostMapping("")
     public ResponseEntity<CustomerResponse> createNewCustomer(
-            @Valid @RequestBody CustomerCreateRequest request) {
+            @RequestBody CustomerCreateRequest request) {
         System.out.println(request);
+        // Validation
+        validateInput(request);
+        // Create response
         CustomerResponse response = new CustomerResponse();
         response.setId(123);
         response.setFull_name( request.getFname() + " " + request.getLname() );

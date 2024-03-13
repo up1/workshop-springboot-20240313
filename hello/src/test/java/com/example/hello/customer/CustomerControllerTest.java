@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -20,9 +22,9 @@ class CustomerControllerTest {
     @DisplayName("ทำการทดสอบดึงข้อมูล customer ทั้งหมดขึ้นมาดู ต้อง success นะ")
     void getAllCustomer() {
         // Act
-        String response = restTemplate.getForObject("/customer", String.class);
+        List response = restTemplate.getForObject("/customer", List.class);
         // Assert
-        assertEquals("Hello Get all customer", response);
+        assertEquals(3, response.size());
     }
 
     @Test

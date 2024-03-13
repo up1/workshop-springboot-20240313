@@ -1,31 +1,22 @@
 package com.example.hello.customer;
 
 public class CustomerResponse{
-	private String fullName;
 	private int id;
+	private String full_name;
 
-	public void setFullName(String fullName){
-		this.fullName = fullName;
-	}
-
-	public String getFullName(){
-		return fullName;
-	}
-
-	public void setId(int id){
-		this.id = id;
-	}
-
-	public int getId(){
+	public int getId() {
 		return id;
 	}
 
-	@Override
- 	public String toString(){
-		return 
-			"CustomerResponse{" + 
-			"full_name = '" + fullName + '\'' + 
-			",id = '" + id + '\'' + 
-			"}";
-		}
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getFull_name() {
+		return full_name;
+	}
+
+	public void setFull_name(String full_name) {
+		this.full_name = full_name;
+	}
 }

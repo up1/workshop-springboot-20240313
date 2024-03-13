@@ -15,8 +15,11 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public String getCustomerById(@PathVariable int id) {
-        return "Get customer by id=" + id;
+    public CustomerResponse getCustomerById(@PathVariable int id) {
+        CustomerResponse response = new CustomerResponse();
+        response.setId(id);
+        response.setFull_name("somkiat pui");
+        return  response;
     }
 
 }

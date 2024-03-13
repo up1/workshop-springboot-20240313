@@ -1,5 +1,7 @@
 package com.example.hello.customer;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -8,6 +10,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
+
+    @PostMapping("")
+    public ResponseEntity<CustomerResponse> createNewCustomer(
+            @RequestBody CustomerCreateRequest request) {
+        System.out.println(request);
+        CustomerResponse response = new CustomerResponse();
+        response.setId(123);
+        response.setFull_name( request.getFname() + " " + request.getLname() );
+        return new ResponseEntity<>(response, HttpStatus.valueOf(201));
+    }
 
     @GetMapping("")
     public List<CustomerResponse> getAllCustomer(

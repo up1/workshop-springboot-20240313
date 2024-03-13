@@ -22,9 +22,10 @@ class CustomerControllerTest {
     @DisplayName("ทำการทดสอบดึงข้อมูล customer ทั้งหมดขึ้นมาดู ต้อง success นะ")
     void getAllCustomer() {
         // Act
-        List response = restTemplate.getForObject("/customer", List.class);
+        CustomerResponse[] response = restTemplate.getForObject("/customer", CustomerResponse[].class);
         // Assert
-        assertEquals(3, response.size());
+        assertEquals(3, response.length);
+        assertEquals(0, response[0].getId());
     }
 
     @Test

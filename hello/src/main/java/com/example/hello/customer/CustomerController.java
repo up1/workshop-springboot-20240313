@@ -5,13 +5,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
 
     @GetMapping("")
-    public String getAllCustomer(){
-        return "Hello Get all customer";
+    public List<CustomerResponse> getAllCustomer(){
+        List<CustomerResponse> responses = new ArrayList<>();
+        responses.add(new CustomerResponse());
+        responses.add(new CustomerResponse());
+        responses.add(new CustomerResponse());
+        return responses;
     }
 
     @GetMapping("/{id}")

@@ -3,10 +3,12 @@ package com.example.hello.customer;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class CustomerCreateRequest{
 
 	@NotBlank(message = "Can not empty")
+	@Size(min = 3, max = 20, message = "The fname must be from 3 to 20 characters.")
 	private String fname;
 
 	private String lname;

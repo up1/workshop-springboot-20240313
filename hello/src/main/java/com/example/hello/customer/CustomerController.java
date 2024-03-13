@@ -28,10 +28,10 @@ public class CustomerController {
 
     @PostMapping("")
     public ResponseEntity<CustomerResponse> createNewCustomer(
-            @RequestBody CustomerCreateRequest request) {
+           @Valid @RequestBody CustomerCreateRequest request) {
         System.out.println(request);
         // Validation
-        validateInput(request);
+//        validateInput(request);
         // Create response
         CustomerResponse response = new CustomerResponse();
         response.setId(123);

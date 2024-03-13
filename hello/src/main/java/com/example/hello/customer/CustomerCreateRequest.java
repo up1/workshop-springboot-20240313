@@ -1,13 +1,16 @@
 package com.example.hello.customer;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class CustomerCreateRequest{
+	@Valid
 	@NotNull
 	private String fname;
 
+	@Valid
 	@NotNull
 	@Size(min = 3, max = 20)
 	private String lname;

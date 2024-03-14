@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "248baa53-8f7d-4e05-8a68-9d97d57d68ab",
+		"name": "auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1453931",
+		"_collection_link": "https://red-firefly-245852.postman.co/workspace/xxxx~36ecdd7d-7b94-40ca-9975-7dc77e49b630/collection/1453931-248baa53-8f7d-4e05-8a68-9d97d57d68ab?action=share&source=collection_link&creator=1453931"
+	},
+	"item": [
+		{
+			"name": "1. Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Hello protected",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJkZW1vIiwiaWF0IjoxNzEwMzgxNzg3LCJleHAiOjE3MTAzODMyMjd9.WI8JtXUwKTXKARpPJGo4m_ISV9GFqyv9c5bhcor_rjUYot9xdkTIPj8oI1kYfwTD",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

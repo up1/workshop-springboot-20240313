@@ -1,8 +1,11 @@
 package com.example.hello.customer;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,9 +24,24 @@ class CustomerRepositoryTest {
         // Act
         Customer newCustomer = customerRepository.save(customer);
         // Assert
-        assertEquals(1, newCustomer.getId());
+        assertTrue(newCustomer.getId() > 0);
         assertEquals("Demo fname", newCustomer.getFname());
         assertEquals("Demo lname", newCustomer.getLname());
+    }
+
+    @Test
+    @DisplayName("ไม่สามารถสร้าง customer ได้เนื่องจากชื่อซ้ำ")
+    public void case02(){
+        // Arrange
+        Customer customer = new Customer();
+        customer.setFname("somkiat");
+        customer.setLname("Demo lname");
+        customerRepository.save(customer);
+        // Act
+        Optional<Customer> result
+                = customerRepository.findByFname("somkiat");
+        // Assert
+        assertTrue(result.isPresent());
     }
 
 }

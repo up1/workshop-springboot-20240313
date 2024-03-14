@@ -59,7 +59,7 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public CustomerResponse getCustomerById(@PathVariable int id) {
-        if(id == 2) {
+        if(id == 2 || id == 10) {
             // 404
             throw new CustomerNotFoundException("Customer id=" + id + " not found");
         }

@@ -19,12 +19,12 @@ class CustomerServiceV2Test {
     void case01() {
         // Arrange
         CustomerCreateRequest request = new CustomerCreateRequest();
-        request.setFname("somkiat");
+        request.setFname("somkiat2");
         request.setLname("pui");
         // Act
         CustomerResponse response = customerServiceV2.process(request);
         // Assert
         assertTrue(response.getId() > 0);
-        assertEquals("somkiat pui", response.getFull_name());
+        assertEquals("somkiat2 pui", response.getFull_name());
     }
 }

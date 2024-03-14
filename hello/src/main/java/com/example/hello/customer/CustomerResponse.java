@@ -1,7 +1,7 @@
 package com.example.hello.customer;
 
 public class CustomerResponse{
-	private Long id;
+	private Long id = 0L;
 	private String full_name;
 
 	public Long getId() {

@@ -13,7 +13,7 @@ public class UserGateway {
     private RestTemplate restTemplate;
 
     public Optional<UserResponse> callUserById(int id) {
-        String url = "https://jsonplaceholder.typicode.com/users/1";
+        String url = "http://localhost:9999/users/1";
         UserResponse response = restTemplate.getForObject(url, UserResponse.class);
         return  Optional.of(response);
     }

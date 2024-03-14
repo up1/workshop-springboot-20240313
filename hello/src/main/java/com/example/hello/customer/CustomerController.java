@@ -3,6 +3,7 @@ package com.example.hello.customer;
 import com.example.hello.MyBean;
 import com.example.hello.validator.EmptyValidator;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,9 @@ import static org.springframework.http.HttpStatus.valueOf;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
+
+    @Autowired
+    private CustomerService customerServiceV2;
 
     private final MyBean myBean;
     private final EmptyValidator emptyValidator;

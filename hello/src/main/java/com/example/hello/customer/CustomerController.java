@@ -42,8 +42,12 @@ public class CustomerController {
         // Validation
 //        validateInput(request);
         // Create response
+        // Business process
+
+        customerServiceV2.process(request);
+
         CustomerResponse response = new CustomerResponse();
-        response.setId(123);
+        response.setId(123L);
         response.setFull_name( request.getFname() + " " + request.getLname() );
         return new ResponseEntity<>(response, valueOf(201));
     }
@@ -62,7 +66,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public CustomerResponse getCustomerById(@PathVariable int id) {
+    public CustomerResponse getCustomerById(@PathVariable long id) {
         if(id == 2 || id == 10) {
             // 404
             throw new CustomerNotFoundException("Customer id=" + id + " not found");

@@ -68,4 +68,19 @@ class CustomerControllerTest {
         assertEquals("somkiat pui", response.getBody().getFull_name());
     }
 
+    @Test
+    @DisplayName("Failure case  :: blank firstname")
+    public void createNewCustomerWithBlankFirstname(){
+        // Arrange
+        CustomerCreateRequest request = new CustomerCreateRequest();
+        request.setFname("");
+        request.setLname("pui");
+        // Act
+        ResponseEntity<ErrorResponse> response
+                = restTemplate.postForEntity("/customer", request, ErrorResponse.class);
+        // Assert
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals("Can not empty", response.getBody().getMessage());
+    }
+
 }
